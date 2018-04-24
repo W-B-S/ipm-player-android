@@ -3,7 +3,6 @@ package com.ipm.ipm.module.splash;
 import android.content.Intent;
 import android.os.Bundle;
 
-import com.ipm.ipm.PlayActivity;
 import com.ipm.ipm.R;
 import com.ipm.ipm.base.BaseMvpActivity;
 import com.ipm.ipm.base.mvp.factory.CreatePresenter;
