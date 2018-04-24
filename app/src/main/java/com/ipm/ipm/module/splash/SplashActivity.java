@@ -3,19 +3,18 @@ package com.ipm.ipm.module.splash;
 import android.content.Intent;
 import android.os.Bundle;
 
-import com.ipm.ipm.MainActivity;
+import com.ipm.ipm.PlayActivity;
 import com.ipm.ipm.R;
 import com.ipm.ipm.base.BaseMvpActivity;
 import com.ipm.ipm.base.mvp.factory.CreatePresenter;
+import com.ipm.ipm.module.main.MainActivity;
 import com.ipm.ipm.module.splash.presenter.SplashContract;
 import com.ipm.ipm.module.splash.presenter.SplashPresenter;
 
 import java.util.concurrent.TimeUnit;
 
 import io.reactivex.Observable;
-import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.disposables.Disposable;
 
 @CreatePresenter(SplashPresenter.class)
 public class SplashActivity extends BaseMvpActivity<SplashContract.View,SplashPresenter> implements SplashContract.View {
@@ -27,6 +26,8 @@ public class SplashActivity extends BaseMvpActivity<SplashContract.View,SplashPr
 
     @Override
     protected void init(Bundle savedInstanceState) {
+
+        SplashPresenter presenter = getPresenter();
 
         Observable.timer(3000, TimeUnit.MILLISECONDS)
                 .compose(bindToLifecycle())

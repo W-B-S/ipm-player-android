@@ -3,8 +3,6 @@ package com.ipm.ipm;
 import android.os.RemoteException;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.View;
-import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.TextView;
@@ -16,7 +14,7 @@ import com.lzx.musiclibrary.aidl.model.SongInfo;
 import com.lzx.musiclibrary.manager.MusicManager;
 import com.lzx.musiclibrary.manager.TimerTaskManager;
 
-public class MainActivity extends AppCompatActivity implements OnPlayerEventListener {
+public class PlayActivity extends AppCompatActivity implements OnPlayerEventListener {
 
     private SeekBar mSeekBar;
     private ImageView mBtnPlayPause;
@@ -26,7 +24,7 @@ public class MainActivity extends AppCompatActivity implements OnPlayerEventList
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_player);
 
         mBtnPlayPause = findViewById(R.id.btn_play_pause);
         mSeekBar = findViewById(R.id.seekBar);
@@ -107,7 +105,7 @@ public class MainActivity extends AppCompatActivity implements OnPlayerEventList
 
     @Override
     public void onError(String s) {
-        Toast.makeText(MainActivity.this, "播放失败", Toast.LENGTH_SHORT).show();
+        Toast.makeText(PlayActivity.this, "播放失败", Toast.LENGTH_SHORT).show();
 
     }
 
