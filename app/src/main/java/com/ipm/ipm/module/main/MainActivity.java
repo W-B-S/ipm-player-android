@@ -17,9 +17,7 @@ import java.util.List;
 
 public class MainActivity extends BaseMvpActivity {
 
-    private MainTabView mainTab;
     private NoScrollViewPager viewPage;
-    private List<BaseMvpFragment> fragments;
 
     @Override
     protected int getLayoutId() {
@@ -29,15 +27,15 @@ public class MainActivity extends BaseMvpActivity {
     @Override
     protected void init(Bundle savedInstanceState) {
 
-        mainTab = findViewById(R.id.mainTab);
+        MainTabView mainTab = findViewById(R.id.mainTab);
         viewPage = findViewById(R.id.viewPage);
 
-        fragments = new ArrayList<>();
+        List<BaseMvpFragment> fragments = new ArrayList<>();
         fragments.add(new FindFragment());
         fragments.add(new MusicFragment());
         fragments.add(new MineFragment());
 
-        viewPage.setAdapter(new CommonPagerAdapter(getSupportFragmentManager(),fragments));
+        viewPage.setAdapter(new CommonPagerAdapter(getSupportFragmentManager(), fragments));
 
         mainTab.setOnTabClickListener(pos -> viewPage.setCurrentItem(pos));
         mainTab.click(0);
