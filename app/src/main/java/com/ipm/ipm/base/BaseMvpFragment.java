@@ -12,8 +12,9 @@ import android.view.ViewGroup;
 import com.ipm.ipm.base.mvp.BaseContract;
 import com.ipm.ipm.base.mvp.BaseMvpProxy;
 import com.ipm.ipm.base.mvp.factory.PresenterMvpFactory;
+import com.ipm.ipm.base.mvp.factory.PresenterMvpFactoryImpl;
 import com.ipm.ipm.base.mvp.factory.PresenterProxyInterface;
-import com.trello.rxlifecycle2.components.RxFragment;
+import com.trello.rxlifecycle2.components.support.RxFragment;
 
 /**
  * Created by fanqilong on 2018/4/24.
@@ -67,6 +68,7 @@ public abstract class BaseMvpFragment<V extends BaseContract.BaseView, P extends
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        mProxy = new BaseMvpProxy<>(PresenterMvpFactoryImpl.<V, P>createFactory(getClass()), getActivity());
         if (savedInstanceState != null) {
             mProxy.onRestoreInstanceState(savedInstanceState.getBundle(PRESENTER_SAVE_KEY));
         }
@@ -191,4 +193,7 @@ public abstract class BaseMvpFragment<V extends BaseContract.BaseView, P extends
     }
 
 
+    public CharSequence getFragmentTitle() {
+        return "";
+    }
 }

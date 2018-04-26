@@ -26,8 +26,6 @@ public class SplashActivity extends BaseMvpActivity<SplashContract.View,SplashPr
     @Override
     protected void init(Bundle savedInstanceState) {
 
-        SplashPresenter presenter = getPresenter();
-
         Observable.timer(3000, TimeUnit.MILLISECONDS)
                 .compose(bindToLifecycle())
                 .observeOn(AndroidSchedulers.mainThread())

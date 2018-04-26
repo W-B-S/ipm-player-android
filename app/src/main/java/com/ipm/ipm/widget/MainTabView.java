@@ -79,7 +79,8 @@ public class MainTabView extends LinearLayout implements View.OnClickListener {
 
     @Override
     public void onClick(View view) {
-        int tag = (int) view.getTag();
+
+        int tag = Integer.valueOf(((String) view.getTag()));
         if (tag==tempPos){
             return;
         }
@@ -121,6 +122,20 @@ public class MainTabView extends LinearLayout implements View.OnClickListener {
     private void updateFind(boolean b) {
         tv_find.setSelected(b);
         iv_find.setSelected(b);
+    }
+
+    public void click(int pos){
+        switch (pos) {
+            case 0:
+                onClick(ll_find);
+                break;
+            case 1:
+                onClick(ll_music);
+                break;
+            case 2:
+                onClick(ll_mine);
+                break;
+        }
     }
 
 
