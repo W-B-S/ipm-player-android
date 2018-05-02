@@ -8,4 +8,6 @@
     <color name="ipm_comm_bg">#FFFFFF</color>
     <color name="ipm_text_unselect_color">#5D646E</color>
     <color name="ipm_text_select_color">#3C3BEE</color>
+    <color name="ipm_title_color">#000000</color>
+
 </resources>

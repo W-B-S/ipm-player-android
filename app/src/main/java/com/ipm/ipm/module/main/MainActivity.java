@@ -6,6 +6,8 @@ import com.ipm.ipm.R;
 import com.ipm.ipm.base.BaseMvpActivity;
 import com.ipm.ipm.base.BaseMvpFragment;
 import com.ipm.ipm.base.adapter.CommonPagerAdapter;
+import com.ipm.ipm.base.mvp.BaseContract;
+import com.ipm.ipm.base.mvp.factory.CreatePresenter;
 import com.ipm.ipm.module.main.find.FindFragment;
 import com.ipm.ipm.module.main.mine.MineFragment;
 import com.ipm.ipm.module.main.music.MusicFragment;
@@ -14,7 +16,6 @@ import com.ipm.uilibrary.widget.NoScrollViewPager;
 
 import java.util.ArrayList;
 import java.util.List;
-
 public class MainActivity extends BaseMvpActivity {
 
     private NoScrollViewPager viewPage;
