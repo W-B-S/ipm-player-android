@@ -1,14 +1,17 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context="com.ipm.ipm.module.main.find.FindFragment">
-
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/recyclerView"
+    <com.ipm.ipm.widget.HomeSelectView
+        android:id="@+id/homeSelectView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:descendantFocusability="blocksDescendants" />
+        android:layout_height="wrap_content"/>
+    <com.ipm.uilibrary.widget.NoScrollViewPager
+        android:id="@+id/viewPage"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
 
-</RelativeLayout>
+</LinearLayout>

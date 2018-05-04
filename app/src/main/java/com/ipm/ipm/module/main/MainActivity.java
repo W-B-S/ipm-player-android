@@ -38,8 +38,11 @@ public class MainActivity extends BaseMvpActivity {
 
         viewPage.setAdapter(new CommonPagerAdapter(getSupportFragmentManager(), fragments));
 
+        viewPage.setOffscreenPageLimit(3);
         mainTab.setOnTabClickListener(pos -> viewPage.setCurrentItem(pos));
         mainTab.click(0);
+
+
 
 
     }

@@ -8,7 +8,7 @@
     <com.ipm.ipm.widget.banner.BannerLayout
         android:id="@+id/banner_layout"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/y432"
+        android:layout_height="@dimen/y286"
         app:showIndicator="true"
         app:indicatorGravity="center"/>
 </LinearLayout>

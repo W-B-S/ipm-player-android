@@ -2,24 +2,23 @@
 <LinearLayout xmlns:tools="http://schemas.android.com/tools"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:paddingLeft="@dimen/x48"
-    android:paddingRight="@dimen/x48"
-    android:paddingTop="@dimen/y60"
-    android:paddingBottom="@dimen/y30"
+    android:paddingLeft="@dimen/x32"
+    android:paddingRight="@dimen/x32"
+    android:paddingTop="@dimen/y40"
     android:layout_height="wrap_content">
     <TextView
         android:id="@+id/title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="@color/ipm_title_color"
-        android:textSize="@dimen/x60"
+        android:textSize="@dimen/x40"
         tools:text="推荐歌单"/>
     <TextView
         android:id="@+id/more"
         android:gravity="right|center_vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:textSize="@dimen/x36"
+        android:textSize="@dimen/x24"
         android:text="全部歌单"
         android:drawablePadding="@dimen/x27"
         android:drawableRight="@drawable/in_ic"/>

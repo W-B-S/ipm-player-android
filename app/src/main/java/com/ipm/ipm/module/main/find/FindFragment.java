@@ -1,8 +1,11 @@
 package com.ipm.ipm.module.main.find;
 
 
+import android.graphics.Canvas;
+import android.graphics.Rect;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
 
 import com.ipm.ipm.R;
 import com.ipm.ipm.adapter.banner.BannerInfo;
@@ -11,13 +14,21 @@ import com.ipm.ipm.adapter.category.Category;
 import com.ipm.ipm.adapter.category.CategoryItemViewBinder;
 import com.ipm.ipm.adapter.home.HomeInfo;
 import com.ipm.ipm.adapter.home.HomeInfoItemViewBinder;
+import com.ipm.ipm.adapter.homebanner.HomeBanner;
+import com.ipm.ipm.adapter.homebanner.HomeBannerItemViewBinder;
 import com.ipm.ipm.base.BaseMvpFragment;
+import com.ipm.ipm.base.adapter.CommonPagerAdapter;
 import com.ipm.ipm.base.mvp.factory.CreatePresenter;
 import com.ipm.ipm.bean.HomeInfoResponse;
+import com.ipm.ipm.module.findcp.FindCpFragment;
+import com.ipm.ipm.module.findmusic.FindMusicFragment;
 import com.ipm.ipm.module.main.find.presenter.HomeContract;
 import com.ipm.ipm.module.main.find.presenter.HomePresenter;
+import com.ipm.ipm.widget.HomeSelectView;
+import com.ipm.uilibrary.widget.NoScrollViewPager;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import me.drakeet.multitype.MultiTypeAdapter;
@@ -25,13 +36,12 @@ import me.drakeet.multitype.MultiTypeAdapter;
 /**
  * 主界面  发现
  */
-@CreatePresenter(HomePresenter.class)
-public class FindFragment extends BaseMvpFragment<HomeContract.View, HomePresenter> implements HomeContract.View {
-    private static final int SPAN_COUNT = 3;
 
-    private RecyclerView recyclerView;
-    private MultiTypeAdapter adapter;
-    private List<Object> items;
+public class FindFragment extends BaseMvpFragment {
+
+
+    private HomeSelectView homeSelectView;
+    private NoScrollViewPager viewPage;
 
     @Override
     protected int getLayoutId() {
@@ -40,54 +50,18 @@ public class FindFragment extends BaseMvpFragment<HomeContract.View, HomePresent
 
     @Override
     protected void init() {
-        recyclerView = ((RecyclerView) mRootView.findViewById(R.id.recyclerView));
+
+        homeSelectView = ((HomeSelectView) mRootView.findViewById(R.id.homeSelectView));
+        viewPage = ((NoScrollViewPager) mRootView.findViewById(R.id.viewPage));
 
 
-        adapter = new MultiTypeAdapter();
-        adapter.register(Category.class, new CategoryItemViewBinder());
-        adapter.register(BannerInfo.class,new BannerItemViewBinder());
-        adapter.register(HomeInfo.class,new HomeInfoItemViewBinder());
-
-        GridLayoutManager layout = new GridLayoutManager(mContext, SPAN_COUNT);
-        layout.setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup() {
-            @Override
-            public int getSpanSize(int position) {
-                return items.get(position) instanceof Category || items.get(position) instanceof BannerInfo ? SPAN_COUNT : 1;
-            }
-        });
-        recyclerView.setLayoutManager(layout);
-
-        recyclerView.setAdapter(adapter);
+        ArrayList<BaseMvpFragment> fragments = new ArrayList<>();
+        fragments.add(new FindMusicFragment());
+        fragments.add(new FindCpFragment());
+        CommonPagerAdapter commonPagerAdapter = new CommonPagerAdapter(getChildFragmentManager(), fragments);
+        viewPage.setAdapter(commonPagerAdapter);
 
 
-        getPresenter().requestHomeList();
-        getPresenter().requestBanner();
-
-
-    }
-
-    @Override
-    public void onHomeListSuccess(HomeInfoResponse homeInfoList) {
-        List<HomeInfo> data = homeInfoList.getData();
-
-        items = new ArrayList<>();
-        items.add(new BannerInfo());
-        items.add(new Category("推荐歌单", false));
-        items.addAll(data);
-        items.add(new Category("最热歌单", true));
-        items.addAll(data);
-        items.add(new Category("推荐单曲", true));
-        items.addAll(data);
-        items.add(new Category("最热歌曲", true));
-        items.addAll(data);
-        items.add(new Category("有声读物", true));
-        items.addAll(data);
-        adapter.setItems(items);
-        adapter.notifyDataSetChanged();
-    }
-
-    @Override
-    public void onBannerSuccess() {
-
+        homeSelectView.setHomeSelectListener(type -> viewPage.setCurrentItem(type));
     }
 }

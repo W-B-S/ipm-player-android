@@ -1,6 +1,5 @@
-package com.ipm.ipm.adapter.home;
+package com.ipm.ipm.adapter.homebanner;
 
-import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -9,41 +8,30 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
-import com.ipm.ipm.IPMApp;
 import com.ipm.ipm.R;
-
-import java.util.HashMap;
 
 import me.drakeet.multitype.ItemViewBinder;
 
 /**
- * Created by fanqilong on 2018/5/2.
+ * Created by fanqilong on 2018/5/4.
  */
 
-public class HomeInfoItemViewBinder extends ItemViewBinder<HomeInfo,HomeInfoItemViewBinder.ViewHolder> {
+public class HomeBannerItemViewBinder extends ItemViewBinder<HomeBanner,HomeBannerItemViewBinder.ViewHolder> {
 
 
-    @Override
-    protected void onViewAttachedToWindow(@NonNull ViewHolder holder) {
-        super.onViewAttachedToWindow(holder);
-
-    }
 
     @NonNull
     @Override
     protected ViewHolder onCreateViewHolder(@NonNull LayoutInflater inflater, @NonNull ViewGroup parent) {
-        return new ViewHolder(inflater.inflate(R.layout.item_home_info,parent,false));
+        return new ViewHolder(inflater.inflate(R.layout.item_home_banner,parent,false));
     }
 
     @Override
-    protected void onBindViewHolder(@NonNull ViewHolder holder, @NonNull HomeInfo item) {
-        //holder.image
-        Context context = holder.image.getContext();
-        Glide.with(context).load(IPMApp.map.get(item.getCover())).into(holder.image);
+    protected void onBindViewHolder(@NonNull ViewHolder holder, @NonNull HomeBanner item) {
+        Glide.with(holder.image.getContext()).load(R.drawable.homebannerpic).into(holder.image);
     }
 
     static class ViewHolder extends RecyclerView.ViewHolder{
-
         private final ImageView image;
 
         public ViewHolder(View itemView) {

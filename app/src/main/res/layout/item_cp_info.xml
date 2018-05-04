@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="horizontal"
+    android:layout_height="wrap_content">
+    <ImageView
+        android:id="@+id/image"
+        android:layout_width="@dimen/x212"
+        android:layout_height="@dimen/x212" />
+    <LinearLayout
+        android:layout_marginLeft="@dimen/x28"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/title"
+            android:textSize="@dimen/x30"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="DMOB沙漠兄弟"
+            android:textColor="#FF212832"/>
+        <TextView
+            android:id="@+id/dec"
+            android:layout_marginTop="@dimen/y14"
+            android:textSize="@dimen/x22"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#FF5D646E"
+            tools:text="艾福杰尼和黄旭都来自新疆，艾福杰尼是新了DMOB沙漠兄弟厂牌，发表了最新专辑《五亿探长》，在参加《中国有嘻哈》的时候也一同进入了热狗组，并肩作战…"/>
+    </LinearLayout>
+</LinearLayout>
