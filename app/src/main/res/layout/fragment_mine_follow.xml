@@ -1,0 +1,39 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingRight="@dimen/x32"
+    android:paddingLeft="@dimen/x32"
+    tools:context="com.ipm.ipm.module.minefollow.MineFollowFragment">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#99A0AA"
+            android:textSize="@dimen/x24"
+            android:text="0个歌单"/>
+        <LinearLayout
+            android:layout_alignParentRight="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/song_sheet_manag_ic"/>
+        </LinearLayout>
+    </RelativeLayout>
+
+    <TextView
+        android:layout_marginTop="@dimen/x66"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="没有收藏歌单"
+        android:gravity="center_horizontal"
+        android:textSize="@dimen/x30"
+        android:textColor="#99A0AA"/>
+
+</LinearLayout>
