@@ -1,10 +1,12 @@
 package com.ipm.ipm.adapter.home;
 
+import java.io.Serializable;
+
 /**
  * Created by fanqilong on 2018/5/2.
  */
 
-public class HomeInfo {
+public class HomeInfo implements Serializable {
 
     private String musicName;
     private String singer;

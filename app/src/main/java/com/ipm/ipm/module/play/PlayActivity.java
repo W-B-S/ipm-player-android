@@ -1,35 +1,51 @@
-package com.ipm.ipm;
+package com.ipm.ipm.module.play;
 
 import android.os.RemoteException;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
+import com.ipm.ipm.IPMApp;
+import com.ipm.ipm.R;
+import com.ipm.ipm.adapter.home.HomeInfo;
+import com.ipm.ipm.base.BaseMvpActivity;
 import com.ipm.ipm.utils.FormatUtil;
+import com.ipm.ipm.widget.CircleImageView;
 import com.lzx.musiclibrary.aidl.listener.OnPlayerEventListener;
 import com.lzx.musiclibrary.aidl.model.SongInfo;
 import com.lzx.musiclibrary.manager.MusicManager;
 import com.lzx.musiclibrary.manager.TimerTaskManager;
 
-public class PlayActivity extends AppCompatActivity implements OnPlayerEventListener {
+import java.util.List;
+
+public class PlayActivity extends BaseMvpActivity implements OnPlayerEventListener {
 
     private SeekBar mSeekBar;
     private ImageView mBtnPlayPause;
     private TextView mStartTime, mTotalTime;
     private TimerTaskManager mTimerTaskManager;
+    private HomeInfo homeInfo;
+    private CircleImageView music_cover;
+    private TextView song_name;
+
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_player);
+    protected int getLayoutId() {
+        return R.layout.activity_player;
+    }
 
+    @Override
+    protected void init(Bundle savedInstanceState) {
         mBtnPlayPause = findViewById(R.id.btn_play_pause);
         mSeekBar = findViewById(R.id.seekBar);
         mStartTime = findViewById(R.id.start_time);
         mTotalTime = findViewById(R.id.total_time);
+        music_cover = ((CircleImageView) findViewById(R.id.music_cover));
+        song_name = ((TextView) findViewById(R.id.song_name));
 
 
         mTimerTaskManager = new TimerTaskManager();
@@ -38,14 +54,16 @@ public class PlayActivity extends AppCompatActivity implements OnPlayerEventList
 
         MusicManager.get().addPlayerEventListener(this);
 
-
+        homeInfo = (HomeInfo) getIntent().getSerializableExtra("info");
+        Glide.with(mContext).load(IPMApp.map.get(homeInfo.getCover())).into(music_cover);
+        song_name.setText(homeInfo.getSinger());
 
         mBtnPlayPause.setOnClickListener(v -> {
             if (MusicManager.isPlaying()) {
                 MusicManager.get().pauseMusic();
             } else {
                 SongInfo info = new SongInfo();
-                info.setSongUrl("http://47.91.208.29:8080/ipfs/Qmd4o2RcvBJjUP7fffqNkwXa1NiBYJgzWN682AnSGyV1EB");
+                info.setSongUrl("http://47.91.208.29:8080/ipfs/" + homeInfo.getUrl());
                 MusicManager.get().playMusicByInfo(info);
             }
         });
@@ -68,6 +86,13 @@ public class PlayActivity extends AppCompatActivity implements OnPlayerEventList
         });
 
 
+        SongInfo info = new SongInfo();
+        info.setSongId(homeInfo.getUrl());
+        info.setSongUrl("http://47.91.208.29:8080/ipfs/" + homeInfo.getUrl());
+        MusicManager.get().playMusicByInfo(info);
+
+        List<SongInfo> playList = MusicManager.get().getPlayList();
+        playList.size();
     }
 
 
@@ -78,7 +103,7 @@ public class PlayActivity extends AppCompatActivity implements OnPlayerEventList
 
     @Override
     public void onPlayerStart() {
-        mBtnPlayPause.setImageResource(R.mipmap.ic_pause);
+        mBtnPlayPause.setImageResource(R.drawable.pause_ic);
 
         mTimerTaskManager.scheduleSeekBarUpdate();
         try {
@@ -92,13 +117,13 @@ public class PlayActivity extends AppCompatActivity implements OnPlayerEventList
 
     @Override
     public void onPlayerPause() {
-        mBtnPlayPause.setImageResource(R.mipmap.ic_play);
+        mBtnPlayPause.setImageResource(R.drawable.play_ic);
         mTimerTaskManager.stopSeekBarUpdate();
     }
 
     @Override
     public void onPlayCompletion() {
-        mBtnPlayPause.setImageResource(R.mipmap.ic_play);
+        mBtnPlayPause.setImageResource(R.drawable.play_ic);
         mSeekBar.setProgress(0);
         mStartTime.setText("00:00");
     }

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:background="@color/white"
+    android:paddingRight="@dimen/x32"
+    android:paddingLeft="@dimen/x32"
+    android:layout_height="@dimen/y106">
+    <RelativeLayout
+        android:id="@+id/rl_left"
+        android:layout_width="@dimen/x100"
+        android:layout_height="match_parent">
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:src="@drawable/back_ic"/>
+    </RelativeLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:maxWidth="@dimen/x500"
+        android:layout_centerInParent="true"
+        android:singleLine="true"
+        tools:text="音乐音质"
+        android:textColor="#212832"
+        android:textSize="@dimen/x30" />
+    <RelativeLayout
+        android:id="@+id/rl_right"
+        android:layout_width="@dimen/x100"
+        android:layout_alignParentRight="true"
+        android:layout_height="match_parent">
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:src="@drawable/play_list_ic"/>
+    </RelativeLayout>
+
+</RelativeLayout>
