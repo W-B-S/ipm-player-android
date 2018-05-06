@@ -26,6 +26,7 @@
         android:layout_height="@dimen/y26"
         android:background="#F4F6F6"/>
     <RelativeLayout
+        android:id="@+id/rl_jifen"
         android:paddingRight="@dimen/x32"
         android:paddingLeft="@dimen/x32"
         android:layout_width="match_parent"
@@ -52,6 +53,7 @@
     </RelativeLayout>
 
     <RelativeLayout
+        android:id="@+id/rl_setting"
         android:paddingRight="@dimen/x32"
         android:paddingLeft="@dimen/x32"
         android:layout_width="match_parent"
@@ -80,6 +82,7 @@
         android:layout_height="@dimen/y26"
         android:background="#F4F6F6"/>
     <RelativeLayout
+        android:id="@+id/rl_share"
         android:paddingRight="@dimen/x32"
         android:paddingLeft="@dimen/x32"
         android:layout_width="match_parent"
@@ -104,6 +107,7 @@
             android:textColor="#212832"/>
     </RelativeLayout>
     <RelativeLayout
+        android:id="@+id/rl_about"
         android:paddingRight="@dimen/x32"
         android:paddingLeft="@dimen/x32"
         android:layout_width="match_parent"
