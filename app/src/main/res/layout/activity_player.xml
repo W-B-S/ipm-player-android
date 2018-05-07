@@ -53,12 +53,14 @@
             android:layout_height="wrap_content"
             android:src="@drawable/song_like_ic" />
         <ImageView
+            android:id="@+id/iv_create_song_sheet"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:src="@drawable/play_add_folder_ic" />
 
         <ImageView
+            android:id="@+id/iv_share"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
@@ -149,6 +151,7 @@
                 android:src="@drawable/next_ic" />
         </RelativeLayout>
         <ImageView
+            android:id="@+id/iv_dabang"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"

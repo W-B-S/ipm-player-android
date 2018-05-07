@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:background="@drawable/shape_dialog_bg"
+    android:orientation="vertical"
+    android:id="@+id/ll_root"
+    android:layout_height="wrap_content">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="新建歌单"
+        android:layout_gravity="center_horizontal"
+        android:textSize="@dimen/x30"
+        android:textColor="#212832"
+        android:textStyle="bold"
+        android:layout_marginTop="@dimen/x66" />
+
+    <EditText
+        android:layout_marginTop="@dimen/y40"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y94"
+        android:layout_marginRight="@dimen/x32"
+        android:layout_marginLeft="@dimen/x32"
+        android:paddingLeft="@dimen/x26"
+        android:paddingRight="@dimen/x26"
+        android:textSize="@dimen/x30"
+        android:textColor="#A9B1BD"
+        android:background="@drawable/shape_dialog_et_bg" />
+
+    <LinearLayout
+        android:layout_marginBottom="@dimen/y44"
+        android:layout_marginTop="@dimen/y40"
+        android:layout_gravity="center_horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/cancel"
+            android:layout_marginRight="@dimen/x115"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/x30"
+            android:textColor="#212832"
+            android:text="取消"/>
+        <View
+            android:layout_width="@dimen/x2"
+            android:layout_height="@dimen/y34"
+            android:background="#E5E8ED"/>
+        <TextView
+            android:id="@+id/confirm"
+            android:layout_marginLeft="@dimen/x115"
+            android:layout_width="wrap_content"
+            android:textSize="@dimen/x30"
+            android:layout_height="wrap_content"
+            android:textColor="#3C3BEE"
+            android:text="确认"/>
+    </LinearLayout>
+
+</LinearLayout>

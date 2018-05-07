@@ -2,7 +2,6 @@ package com.ipm.ipm.module.play;
 
 import android.os.RemoteException;
 import android.os.Bundle;
-import android.text.TextUtils;
 import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.TextView;
@@ -15,12 +14,14 @@ import com.ipm.ipm.adapter.home.HomeInfo;
 import com.ipm.ipm.base.BaseMvpActivity;
 import com.ipm.ipm.utils.FormatUtil;
 import com.ipm.ipm.widget.CircleImageView;
+import com.ipm.ipm.widget.dialog.CreateSongSheetDialog;
+import com.ipm.ipm.widget.dialog.DaBangDialog;
+import com.ipm.ipm.widget.dialog.ShareDialog;
 import com.lzx.musiclibrary.aidl.listener.OnPlayerEventListener;
 import com.lzx.musiclibrary.aidl.model.SongInfo;
 import com.lzx.musiclibrary.manager.MusicManager;
 import com.lzx.musiclibrary.manager.TimerTaskManager;
 
-import java.util.List;
 
 public class PlayActivity extends BaseMvpActivity implements OnPlayerEventListener {
 
@@ -91,8 +92,20 @@ public class PlayActivity extends BaseMvpActivity implements OnPlayerEventListen
         info.setSongUrl("http://47.91.208.29:8080/ipfs/" + homeInfo.getUrl());
         MusicManager.get().playMusicByInfo(info);
 
-        List<SongInfo> playList = MusicManager.get().getPlayList();
-        playList.size();
+        findViewById(R.id.iv_share).setOnClickListener(view -> {
+            ShareDialog shareDialog = new ShareDialog(mContext);
+            shareDialog.show();
+        });
+
+        findViewById(R.id.iv_dabang).setOnClickListener(view -> {
+            DaBangDialog daBangDialog = new DaBangDialog(mContext);
+            daBangDialog.show();
+        });
+
+        findViewById(R.id.iv_create_song_sheet).setOnClickListener(view -> {
+            CreateSongSheetDialog createSongSheetDialog = new CreateSongSheetDialog(mContext);
+            createSongSheetDialog.show();
+        });
     }
 
 
